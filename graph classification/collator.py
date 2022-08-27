@@ -102,7 +102,7 @@ def collator(items, max_node=512, multi_hop_max_dist=20, spatial_pos_max=20):
         *items)
 
     for idx, _ in enumerate(attn_biases):
-        attn_biases[idx][1:, 1:][spatial_poses[idx] >= spatial_pos_max] = float('-inf')
+        attn_biases[idx][spatial_poses[idx] >= spatial_pos_max] = float('-inf')
     max_node_num = max(i.size(0) for i in xs)
     min_node_num = min(i.size(0) for i in xs)
     y = torch.cat(ys)
