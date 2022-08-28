@@ -114,7 +114,7 @@ def collator(items, max_node=512, multi_hop_max_dist=20, spatial_pos_max=20):
     else:
         edge_input = None
     attn_bias = torch.cat([pad_attn_bias_unsqueeze(
-        i, max_node_num + 1) for i in attn_biases])
+        i, max_node_num) for i in attn_biases])
     if attn_edge_types[0] is not None:
         attn_edge_type = torch.cat(
             [pad_edge_type_unsqueeze(i, max_node_num) for i in attn_edge_types])
